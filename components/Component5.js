@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView } from 'react-native';
+import { StyleSheet, Text, View, ListView,TouchableHighlight } from 'react-native';
 
 export default class Component5 extends React.Component {
   constructor() {
@@ -24,11 +24,20 @@ export default class Component5 extends React.Component {
     });
   }
 
+  onPress(user) {
+    console.log(user);
+    this.props.navigator.push({
+      id: 'component6'
+    })
+  }
+
   renderRow(user, sectionId, rowId, highlightRow) {
     return(
+      <TouchableHighlight onPress={() => {this.onPress(user)}}>
       <View style={styles.row}>
         <Text style={styles.rowText}>{user.name}: {user.email}</Text>
       </View>
+    </TouchableHighlight>
     );
   }
 
